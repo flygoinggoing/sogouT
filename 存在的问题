@@ -1,0 +1,37 @@
+1.网页中存在繁体汉字需不需要转换成简体
+    解决方案： 使用现成的工具 转换
+2.程序有时候会卡住，经分析后是由于存在行数很多的网页，目前观察到的有40w行的网页，这使得程序在处理时很耗(根据新发现，会稍有耗时)时，外部表现为卡住
+    each_doc_row_count程序的统计结果
+        row_below_500 = 896456
+        row_below_1000 =  396094
+        row_below_5000 =  248232
+        row_below_10000 =  3631
+        row_below_20000 =  834
+        row_below_50000 =  237
+        row_below_80000 =  46
+        row_below_100000 =  7
+        row_below_200000 =  8
+        row_below_300000 =  3
+        row_below_400000 =  0
+        row_more_400000 =  1
+     解决方案：舍弃行数超过10000行的doc
+
+     关于处理时间的最新发现：
+        发现处理时间长的主要原因并不是行数的增多，它只是占了一小部分，主要原因是“字符串的连接效率”的问题
+        每次你的在字符串末尾添加内容，Python解释器都会创建一个新的对象并且复制新产生的对象和原来的对象到解释器中(译注:应该是复制到Python解释器的字符串常量池中)。随着处理的字符串的增多，这样的处理过程将会越来越慢。
+        1."+"。使用加号连接2个字符串会调用静态函数string_concat(register PyStringObject *a ,register PyObject * b),在这个函数中会开辟一块大小是a+b的内存的和的存储单元，然后将a,b字符串拷贝进去，试想一下，如果是n个字符串相连  那么会开辟n-1次内存，是比较耗费资源的
+            """字符串相加"""
+            src = ''
+            for line in fp:
+                src += line
+        2.对于使用join函数 "".join([a,b，c，d,....])  会调用string_join函数  会计算列表的长度  一次分配一块内存然后拷贝,所以n个字符串相连 开辟内存的次数是1次
+            """字符串join"""
+            src = ''.join([])
+
+        3.'io.StringIO'，内存字符串IO拼接。
+            """字符串内存IO"""
+            output = io.StringIO()
+            for line in fp:
+                output.write(line)
+            src = output.getvalue()
+
