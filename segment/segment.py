@@ -25,9 +25,9 @@ def run(read_path, write_path):
     start = time.clock()  # 开始时间
     rows = 0   # 记录doc中的行数
 
-    # 在linux中地址不用转码的
-    read_path = unicode(read_path, "utf8")
-    write_path = unicode(write_path, "utf8")
+    ## 在linux中地址不用转码的
+    #read_path = unicode(read_path, "utf8")
+    #write_path = unicode(write_path, "utf8")
 
     with open(write_path, 'a+') as wf:
         with open(read_path, 'rb') as f:
@@ -50,5 +50,8 @@ def run(read_path, write_path):
 
 if __name__ == '__main__':
     # run('D:/NLP/语料/sogouT/pages.241.clear_50','D:/NLP/语料/sogouT/segment/sogouT.seg')
-    run('H:/SogouT/pages.288/pages.288.clear_50_10000','D:/NLP/语料/sogouT/segment/sogouT288.seg')
+    # run('H:/SogouT/pages.288/pages.288.clear_50_10000','D:/NLP/语料/sogouT/segment/sogouT288.seg')
     # test()
+
+    # linux
+    run('/home/guanpf/语料/sogouT/corpus/pages.243.clear_50_10000', '/home/guanpf/语料/sogouT/segment/sogouT243.seg')
