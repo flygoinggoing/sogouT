@@ -25,7 +25,7 @@ def run(read_path, write_path):
     start = time.clock()  # 开始时间
     rows = 0   # 记录doc中的行数
 
-    # 在linux中地址不用转码
+    # 在linux中地址不用转码的
     read_path = unicode(read_path, "utf8")
     write_path = unicode(write_path, "utf8")
 
