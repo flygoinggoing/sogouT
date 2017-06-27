@@ -132,7 +132,7 @@ def replaceCharEntity(htmlstr):
 
 if __name__=='__main__':
     ## windows
-    # run('h:/SogouT/pages.288/pages.288',50)
+    run('h:/SogouT/pages.244/pages.244',50)
 
     ## linux
-    run('/home/guanpf/语料/sogouT/corpus/pages.242',50)
+    # run('/home/guanpf/语料/sogouT/corpus/pages.242',50)
