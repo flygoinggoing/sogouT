@@ -26,7 +26,7 @@ def list_file(path):
 
 if __name__ == '__main__':
     ## windows
-    run('D:/NLP/语料/sogouT/test/','D:/NLP/语料/sogouT/test.merge')
+    # run('D:/NLP/语料/sogouT/test/','D:/NLP/语料/sogouT/test.merge')
 
     ## linux
-    # run('/home/guanpf/语料/sogouT/segment/',/home/guanpf/语料/sogouT/segment/corpus.all)
+    run('/home/guanpf/语料/sogouT/segment/','/home/guanpf/语料/sogouT/corpus.all')
