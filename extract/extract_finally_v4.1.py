@@ -63,10 +63,9 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
                     out_doc = []
                     s = extract_str(''.join(doc))
                     for l in s:
-                        l = l.strip()
                         l = replaceCharEntity(l)#替换实体
                         l = filter_str(l, limit_sent_length, 0.5)     # 过滤短字符串 和非中文字符串
-                        if (not l.__eq__('')) and out_doc.__contains__(l): # doc去重
+                        if (not l.__eq__('')) and (not out_doc.__contains__(l)): # doc去重
                             out_doc.append(l)
                     if len(out_doc) != 0:
                         wf.write('<doc>\n'+ '\n'.join(out_doc) +'\n</doc>\n')
