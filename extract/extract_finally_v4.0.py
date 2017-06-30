@@ -45,6 +45,7 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
                     continue
 
                 # 文本内简单的去重
+                #  这样是不合理的 抽出文本后做次操作
                 if doc.__contains__(line):
                     continue
 

@@ -1,7 +1,7 @@
 #coding=utf-8
 
 #文件去重
-#1.最容易重复的是与本doc内的重复
+#1.最容易重复的是与本doc内的重复 (此部分已经集成到extract中)
 #2.然后是文章之间的重复
 #采用最笨的方法  逐行比较
 def re_repeat(read_file, write_file):
