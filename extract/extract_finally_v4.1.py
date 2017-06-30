@@ -44,10 +44,6 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
                 if line.__eq__('') or line.startswith('<docno>') or line.startswith('<url>'):
                     continue
 
-                # # 文本内简单的去重
-                # if doc.__contains__(line):
-                #     continue
-
                 rows += 1
                 # doc += line  # 慢
                 doc.append(line)
@@ -70,7 +66,7 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
                         l = l.strip()
                         l = replaceCharEntity(l)#替换实体
                         l = filter_str(l, limit_sent_length, 0.5)     # 过滤短字符串 和非中文字符串
-                        if (not l.__eq__('')) and out_doc.__contains__(l):
+                        if (not l.__eq__('')) and out_doc.__contains__(l): # doc去重
                             out_doc.append(l)
                     if len(out_doc) != 0:
                         wf.write('<doc>\n'+ out_doc +'</doc>\n')
