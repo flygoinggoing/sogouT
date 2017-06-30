@@ -69,7 +69,7 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
                         if (not l.__eq__('')) and out_doc.__contains__(l): # doc去重
                             out_doc.append(l)
                     if len(out_doc) != 0:
-                        wf.write('<doc>\n'+ out_doc +'</doc>\n')
+                        wf.write('<doc>\n'+ '\n'.join(out_doc) +'\n</doc>\n')
                     doc = []
                     rows = 0
     # 结束时间
