@@ -13,7 +13,7 @@ sys.setdefaultencoding('utf-8')
 
 procss_pool = multiprocessing.Pool(processes = 9) # 进程池
 
-def thread(file, write_path):
+def process(file, write_path):
     print(file + ':processing......')
     start_each = time.clock()
     with open(write_path, 'a+') as wf:
@@ -48,7 +48,7 @@ def run(file_document_path,write_path):
         # procss.append(multiprocessing.Process(target=thread, args=(file_document_path+file, write_path+file)))
 
         # 进程池添加
-        procss_pool.apply_async(thread, (file_document_path+file, write_path+file))
+        procss_pool.apply_async(process, (file_document_path+file, write_path+file, ))
 
     procss_pool.close()  # 不在接受进程，调用join之前，先调用close函数，否则会出错
     procss_pool.join()  # 在子进程完成之前父进程阻塞，防止提前结束
