@@ -54,4 +54,4 @@ if __name__ == '__main__':
     # test()
 
     # linux
-    run('/home/guanpf/语料/sogouT/corpus/pages.244.clear_50_10000', '/home/guanpf/语料/sogouT/segment/sogouT244.seg')
+    run('/home/guanpf/语料/sogouT/corpus/pages.267.clear_50_10000', '/home/guanpf/语料/sogouT/segment/')
