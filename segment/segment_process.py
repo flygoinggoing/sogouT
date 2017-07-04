@@ -36,7 +36,7 @@ def run(file_document_path,write_path):
     # 在linux中地址不用转码的
     # file_document_path = unicode(file_document_path, "utf8")
     # write_path = unicode(write_path, "utf8")
-    procss_pool = multiprocessing.Pool(processes = 9) # 进程池声明要放在里边
+    procss_pool = multiprocessing.Pool(processes = 9) # 进程池声明要放在里边,物理核数不够时有几个可用就用几个
 
     start = time.clock()
 
@@ -67,4 +67,4 @@ if __name__ == '__main__':
     # run('D:/NLP/语料/sogouT/test/','D:/NLP/语料/sogouT/test.merge')
 
     ## linux
-    run('/home/guanpf/语料/sogouT/test/','/home/guanpf/语料/sogouT/segment/')
+    run('/home/guanpf/语料/sogouT/corpus/','/home/guanpf/语料/sogouT/segment/')
