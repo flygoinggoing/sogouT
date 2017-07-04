@@ -2,16 +2,16 @@
 import os
 import jieba
 import time
-import threading
+import multiprocessing
 
-# 目前cpu利用率仅占120%
+# 多进程
 
 #往文件写要加这个
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-threads = [] # 线程池
+procss_pool = multiprocessing.Pool(processes = 9) # 进程池
 
 def thread(file, write_path):
     print(file + ':processing......')
@@ -42,14 +42,12 @@ def run(file_document_path,write_path):
     for file in file_list:
         # print file.decode('gbk')  # window
         # print file  # linux
-        # 多线程
+        # 多进程
 
-        threads.append(threading.Thread(target=thread, args=(file_document_path+file, write_path+file)))
+        procss_pool.apply_async(target=thread, args=(file_document_path+file, write_path+file))
 
-    for t in threads:
-        t.setDaemon(True)  # 将线程声明为守护线程，必须在start()调用之前设置，不设置将会无限挂起
-        t.start()
-    threads.join()  # 在子线程完成之前父线程会已知阻塞，防止提前结束
+    procss_pool.close()  # 不在接受进程
+    procss_pool.join()  # 在子进程完成之前父进程阻塞，防止提前结束
 
     end  = time.clock()
     print("共用时{0}s".format(end-start))
