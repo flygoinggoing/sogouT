@@ -3,6 +3,11 @@ import os
 import jieba
 import time
 
+#往文件写要加这个
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 # 将文件夹下所有的文件分词并写出到一个文件里
 def run(file_document_path,write_path):
     # 在linux中地址不用转码的
@@ -40,4 +45,4 @@ if __name__ == '__main__':
     # run('D:/NLP/语料/sogouT/test/','D:/NLP/语料/sogouT/test.merge')
 
     ## linux
-    run('/home/guanpf/语料/sogouT/segment/','/home/guanpf/语料/sogouT/corpus.all')
+    run('/home/guanpf/语料/sogouT/corpus/','/home/guanpf/语料/sogouT/corpus.all')
