@@ -44,9 +44,13 @@ def run(file_document_path,write_path):
         # print file  # linux
         # 多进程
 
-        procss_pool.apply_async(target=thread, args=(file_document_path+file, write_path+file))
+        # 手动添加
+        # procss.append(multiprocessing.Process(target=thread, args=(file_document_path+file, write_path+file)))
 
-    procss_pool.close()  # 不在接受进程
+        # 进程池添加
+        procss_pool.apply_async(thread, (file_document_path+file, write_path+file))
+
+    procss_pool.close()  # 不在接受进程，调用join之前，先调用close函数，否则会出错
     procss_pool.join()  # 在子进程完成之前父进程阻塞，防止提前结束
 
     end  = time.clock()
