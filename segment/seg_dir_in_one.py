@@ -2,6 +2,7 @@
 import os
 import jieba
 
+# 将文件夹下所有的文件分词并写出到一个文件里
 def run(file_document_path,write_path):
     # 在linux中地址不用转码的
     file_document_path = unicode(file_document_path, "utf8")
