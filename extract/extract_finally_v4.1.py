@@ -73,6 +73,7 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
                     rows = 0
     # 结束时间
     end = time.clock()
+    print(read_path+'文件处理结束')
     print('程序结束，共用时：{0}'.format(end - start))
 
 ##过滤短字符串 和 非中文字符串（过滤掉中文占比小的）
@@ -133,7 +134,7 @@ def replaceCharEntity(htmlstr):
 
 if __name__=='__main__':
     ## windows
-    run('h:/SogouT/pages.246/pages.246',50)
+    #run('h:/SogouT/pages.246/pages.246',50)
 
     ## linux
-    # run('/home/guanpf/语料/sogouT/corpus/pages.242',50)
+    run('/home/guanpf/语料/sogouT/corpus/pages.023',50)

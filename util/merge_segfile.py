@@ -29,4 +29,4 @@ if __name__ == '__main__':
     # run('D:/NLP/语料/sogouT/test/','D:/NLP/语料/sogouT/test.merge')
 
     ## linux
-    run('/home/guanpf/语料/sogouT/segment/','/home/guanpf/语料/sogouT/corpus.all')
+    run('/home/guanpf/语料/sogouT/segment/','/home/guanpf/语料/sogouT/corpus.all_all')
