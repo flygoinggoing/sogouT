@@ -17,6 +17,7 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
     :param limit_doc_row:限定文件的行数，和运行效率有关（一般设置为10000）
     :return:
     """
+    print(read_path+"开始处理...")
     start = time.clock()  # 开始时间
     doc_num = 0    # 记录处理的doc数
     rows = 0   # 记录doc中的行数
@@ -137,4 +138,4 @@ if __name__=='__main__':
     #run('h:/SogouT/pages.246/pages.246',50)
 
     ## linux
-    run('/home/guanpf/语料/sogouT/corpus/pages.023',50)
+    run('/home/guanpf/语料/sogouT/corpus/pages.035',50)
