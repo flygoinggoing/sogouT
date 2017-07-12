@@ -1,6 +1,7 @@
 #coding=utf-8
 import re
 import time
+import platform
 
 #往文件写要加这个
 import sys
@@ -17,6 +18,16 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
     :param limit_doc_row:限定文件的行数，和运行效率有关（一般设置为10000）
     :return:
     """
+
+    # # 运行环境判断是否对路径转码(windows有中文要转码)
+    system_path = platform.system()
+    if system_path.__eq__('Windows'):
+        print ("运行环境为Windows")
+        # 在Windows中地址中含有中文要转码的
+        read_path = unicode(read_path, "utf8")
+    elif system_path.__eq__('Linux'):
+        print ("运行环境为Linux")
+
     start = time.clock()  # 开始时间
     doc_num = 0    # 记录处理的doc数
     rows = 0   # 记录doc中的行数

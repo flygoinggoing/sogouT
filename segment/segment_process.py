@@ -3,6 +3,7 @@ import os
 import jieba
 import time
 import multiprocessing
+import platform
 
 # 多进程
 
@@ -33,17 +34,23 @@ def process(file, write_path):
 # 将文件夹下所有的文件分词并写出到一个文件里
 
 def run(file_document_path,write_path):
-    # 在linux中地址不用转码的
-    # file_document_path = unicode(file_document_path, "utf8")
-    # write_path = unicode(write_path, "utf8")
+
+    # 运行环境判断是否对路径转码(windows有中文要转码)
+    system_path = platform.system()
+    if system_path.__eq__('Windows'):
+        print ("运行环境为Windows")
+        # 在Windows中地址中含有中文要转码的
+        file_document_path = unicode(file_document_path, "utf8")
+        write_path = unicode(write_path, "utf8")
+    elif system_path.__eq__('Linux'):
+        print ("运行环境为Linux")
+
     procss_pool = multiprocessing.Pool(processes = 9) # 进程池声明要放在里边,物理核数不够时有几个可用就用几个
 
     start = time.clock()
 
     file_list = os.listdir(file_document_path)
     for file in file_list:
-        # print file.decode('gbk')  # window
-        # print file  # linux
         # 多进程
 
         # 手动添加
@@ -64,7 +71,7 @@ def run(file_document_path,write_path):
 if __name__ == '__main__':
 
     ## windows
-    # run('D:/NLP/语料/sogouT/test/','D:/NLP/语料/sogouT/test.merge')
+    run('h:/SogouT/测试/','h:/SogouT/testseg/')
 
     ## linux
-    run('/home/guanpf/语料/sogouT/corpus/','/home/guanpf/语料/sogouT/segment/')
+    # run('/home/guanpf/语料/sogouT/corpus/','/home/guanpf/语料/sogouT/segment/')
