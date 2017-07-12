@@ -8,7 +8,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# 将字符串连接操作 由 “+” 改为   [].append()  然后‘’。jion（[]）
+# 将字符串连接操作 由 “+” 改为   [].append()  然后 ''。jion（[]）
 # 加入简单的去重，以doc为基本单元
 def run(read_path, limit_sent_length, limit_doc_row = 10000):
     """
