@@ -28,6 +28,7 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
     elif system_path.__eq__('Linux'):
         print ("运行环境为Linux")
 
+    print(read_path+'准备开始处理...')
     start = time.clock()  # 开始时间
     doc_num = 0    # 记录处理的doc数
     rows = 0   # 记录doc中的行数
@@ -148,4 +149,4 @@ if __name__=='__main__':
     #run('h:/SogouT/pages.246/pages.246',50)
 
     ## linux
-    run('/home/guanpf/语料/sogouT/corpus/pages.023',50)
+    run('/home/guanpf/语料/sogouT/corpus/pages.141',50)
