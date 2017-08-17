@@ -37,6 +37,7 @@ except:
 finally:
     print 'error_num:',error_num
     print 'word_count',word_count
+    print 'line_num',line_num
     with open('/home/guanpf/vocab.txt','a+') as fout:
         list = sorted(dict_count.items(),key=lambda item:item[1])
         for word,num in list:
