@@ -36,7 +36,7 @@ def run(file_document_path,write_path):
     # 在linux中地址不用转码的
     # file_document_path = unicode(file_document_path, "utf8")
     # write_path = unicode(write_path, "utf8")
-    procss_pool = multiprocessing.Pool(processes = 12) # 进程池声明要放在里边,物理核数不够时有几个可用就用几个
+    procss_pool = multiprocessing.Pool(processes = 9) # 进程池声明要放在里边,物理核数不够时有几个可用就用几个
 
     start = time.clock()
 

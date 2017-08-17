@@ -1,10 +1,18 @@
 # coding=utf-8
 import os
+import platform
 
 def run(file_document_path,write_path):
-    # 在linux中地址不用转码的
-    file_document_path = unicode(file_document_path, "utf8")
-    write_path = unicode(write_path, "utf8")
+
+    # 运行环境判断是否对路径转码(windows有中文要转码)
+    system_path = platform.system()
+    if system_path.__eq__('Windows'):
+        print ("运行环境为Windows")
+        # 在Windows中地址中含有中文要转码的
+        file_document_path = unicode(file_document_path, "utf8")
+        write_path = unicode(write_path, "utf8")
+    elif system_path.__eq__('Linux'):
+        print ("运行环境为Linux")
 
     file_list = os.listdir(file_document_path)
     with open(write_path,'a+') as wf:
@@ -19,10 +27,6 @@ def run(file_document_path,write_path):
 
 def list_file(path):
     file_list = os.listdir(path)
-
-
-
-
 
 if __name__ == '__main__':
     ## windows

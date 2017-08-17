@@ -138,4 +138,4 @@ if __name__=='__main__':
     #run('h:/SogouT/pages.246/pages.246',50)
 
     ## linux
-    run('/home/guanpf/语料/sogouT/corpus/pages.100',50)
+    run('/home/guanpf/语料/sogouT/corpus/pages.035',50)
