@@ -3,16 +3,24 @@
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
+import time
 word_count = 0
 dict_count = {}
 line_num =0
 error_num = 0
+
+start_time = time.clock()
+temp1_time = start_time
+temp2_time = 0.0
 try:
     with open('/home/guanpf/word2vec/w2v/trunk/train/corpus.all_all','r') as f:
     # with open('/home/guanpf/123', 'r') as f:
         for line in f:
             line_num = line_num+1
+            if line_num%1000000 == 0:
+                temp2_time=temp1_time
+                temp1_time=time.clock()
+                print line_num,'本次用时：',(temp1_time-temp2_time),'s,共用时：',(temp1_time-start_time)/60,'min'
             # line = line.decode('gbk')
             # print line
             for word in line.strip().split(' '):
@@ -38,10 +46,12 @@ finally:
     print 'error_num:',error_num
     print 'word_count',word_count
     print 'line_num',line_num
+    print '共用时：',(time.clock()-start_time)
     with open('/home/guanpf/vocab.txt','a+') as fout:
         list = sorted(dict_count.items(),key=lambda item:item[1])
         for word,num in list:
             fout.write('{}\t{}\t{}\n'.format(word,num,(num*1.0)/word_count))
+    print '结束'
 # line = '我 斯蒂芬 阿 阿哈 赛 a a'
 # for word in line.split(' '):
 #     word_count = word_count + 1
