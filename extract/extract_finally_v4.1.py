@@ -1,13 +1,14 @@
 #coding=utf-8
 import re
 import time
+import platform
 
 #往文件写要加这个
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# 将字符串连接操作 由 “+” 改为   [].append()  然后‘’。jion（[]）
+# 将字符串连接操作 由 “+” 改为   [].append()  然后 ''。jion（[]）
 # 加入简单的去重，以doc为基本单元
 def run(read_path, limit_sent_length, limit_doc_row = 10000):
     """
@@ -17,7 +18,16 @@ def run(read_path, limit_sent_length, limit_doc_row = 10000):
     :param limit_doc_row:限定文件的行数，和运行效率有关（一般设置为10000）
     :return:
     """
-    print(read_path+"开始处理...")
+
+    # # 运行环境判断是否对路径转码(windows有中文要转码)
+    system_path = platform.system()
+    if system_path.__eq__('Windows'):
+        print ("运行环境为Windows")
+        # 在Windows中地址中含有中文要转码的
+        read_path = unicode(read_path, "utf8")
+    elif system_path.__eq__('Linux'):
+        print ("运行环境为Linux")
+
     start = time.clock()  # 开始时间
     doc_num = 0    # 记录处理的doc数
     rows = 0   # 记录doc中的行数
@@ -138,4 +148,4 @@ if __name__=='__main__':
     #run('h:/SogouT/pages.246/pages.246',50)
 
     ## linux
-    run('/home/guanpf/语料/sogouT/corpus/pages.035',50)
+    run('/home/guanpf/语料/sogouT/corpus/pages.023',50)
