@@ -23,6 +23,10 @@ def run(file_document_path,write_path):
             with open(file_document_path+file) as rf:
                 for line in rf:
                     wf.write(line)
+
+            ##############################################
+            os.remove(file_document_path+file) # 因为占空间删除
+            ##################################################
     pass
 
 def list_file(path):
