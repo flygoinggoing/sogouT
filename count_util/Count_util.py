@@ -64,9 +64,9 @@ class Count_util:
 
 
 if __name__ == '__main__':
-    Count_util.count_doc_num('d:/pages.241.extract_python')
+    #Count_util.count_doc_num('d:/pages.241.extract_python')
     #Count_util.count_doc_num('h:/SogouT/pages.241/pages.241')
-    # Count_util.count_sentence_num('d:/pages.241.extract_python')
+    Count_util.count_sentence_num('/home/guanpf/word2vec/w2v/trunk/train/corpus.all_all')
     # Count_util.count_sentence_num('h:/SogouT/pages.241/pages.241')
     # Count_util.count_char_num('d:/pages.241.extract_python')
     # Count_util.count_sentence_char_num('d:/pages.241.extract_python')
