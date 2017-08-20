@@ -13,8 +13,8 @@ start_time = time.clock()
 temp1_time = time.clock()
 temp2_time = 0.0
 try:
-    # with open('/home/guanpf/word2vec/w2v/trunk/train/corpus.all_all','r') as f:
-    with open('/home/guanpf/sogouT288.seg', 'r') as f:
+    #with open('/home/guanpf/word2vec/w2v/trunk/train/corpus.all_all','r') as f:
+    with open('/home/guanpf/word2vec/w2v/trunk/train/corpus.1_978788633', 'r') as f:
         for line in f:
             line_num = line_num+1
             if line_num%1000000 == 0:
@@ -46,7 +46,7 @@ finally:
     print 'error_num:',error_num
     print 'word_count',word_count
     print 'line_num',line_num
-    print '共用时：',(time.clock()-start_time)/3600,'min'
+    print '共用时：',(time.clock()-start_time)/3600,'h'
     with open('/home/guanpf/vocab.txt','a+') as fout:
         list = sorted(dict_count.items(),key=lambda item:item[1])
         for word,num in list:

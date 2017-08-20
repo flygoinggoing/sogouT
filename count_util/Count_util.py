@@ -24,7 +24,7 @@ class Count_util:
         :return: 句子个数（行数）
         """
         num = 0
-        with open(file_path,'rb') as f:
+        with open(file_path, 'rb') as f:
             for line in f:
                 num += 1
 
